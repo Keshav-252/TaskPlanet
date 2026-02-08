@@ -189,3 +189,4 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => { console.log("server started!") });
+// fetch(`${import.meta.env.VITE_API_URL}/posts`)

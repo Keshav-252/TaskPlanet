@@ -5,7 +5,7 @@ import FeedPage from "./pages/Feed.jsx";
 import LoginPage from "./pages/Login.jsx";
 import SignupPage from "./pages/Signup.jsx";
 
-const API_BASE = import.meta.env.VITE_API_URL;
+const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:3001";
 
 const emptyPost = { text: "", imageFile: null };
 
@@ -178,8 +178,8 @@ function App() {
             typeof data.likes === "number"
               ? data.likes
               : currentLiked
-              ? Math.max(0, (p.likeCount || 0) - 1)
-              : (p.likeCount || 0) + 1;
+                ? Math.max(0, (p.likeCount || 0) - 1)
+                : (p.likeCount || 0) + 1;
           return { ...p, likeCount: newCount, likedByMe: !currentLiked };
         })
       );
@@ -207,13 +207,13 @@ function App() {
         prev.map((p) =>
           p._id === id
             ? {
-                ...p,
-                commentCount: data ? data.length : (p.commentCount || 0) + 1,
-                comments: [
-                  { username: currentUser || "You", text, _id: `c-${Date.now()}` },
-                  ...(p.comments || []),
-                ],
-              }
+              ...p,
+              commentCount: data ? data.length : (p.commentCount || 0) + 1,
+              comments: [
+                { username: currentUser || "You", text, _id: `c-${Date.now()}` },
+                ...(p.comments || []),
+              ],
+            }
             : p
         )
       );
