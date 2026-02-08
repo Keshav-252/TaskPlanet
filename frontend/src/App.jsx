@@ -5,7 +5,7 @@ import FeedPage from "./pages/Feed.jsx";
 import LoginPage from "./pages/Login.jsx";
 import SignupPage from "./pages/Signup.jsx";
 
-const API_BASE = "http://localhost:3001";
+const API_BASE = import.meta.env.VITE_API_URL;
 
 const emptyPost = { text: "", imageFile: null };
 
