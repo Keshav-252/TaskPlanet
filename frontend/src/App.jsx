@@ -5,11 +5,7 @@ import FeedPage from "./pages/Feed.jsx";
 import LoginPage from "./pages/Login.jsx";
 import SignupPage from "./pages/Signup.jsx";
 
-const API_BASE = import.meta.env.VITE_API_URL || (typeof window !== "undefined" ? `${window.location.protocol}//${window.location.hostname}:3001` : "");
-
-if (!import.meta.env.VITE_API_URL) {
-  console.warn("VITE_API_URL is not set — using fallback API base:", API_BASE);
-}
+const API_BASE = import.meta.env.VITE_API_URL 
 
 const emptyPost = { text: "", imageFile: null };
 
@@ -46,7 +42,7 @@ function App() {
     try {
       setFeedLoading(true);
       const useHeaders = opts.noAuth ? {} : headers;
-      const res = await fetch(`${API_BASE}/posts`, { headers: useHeaders });
+      const res = await fetch(`${API_BASE}posts`, { headers: useHeaders });
       if (!res.ok) throw new Error("Failed to load feed");
       const data = await res.json();
       setPosts(data);
