@@ -67,7 +67,7 @@ function App() {
     }
     try {
       setAuthLoading(true);
-      const res = await fetch(`${API_BASE}/signup`, {
+      const res = await fetch(`${API_BASE}signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, username, password }),
@@ -95,7 +95,7 @@ function App() {
     }
     try {
       setAuthLoading(true);
-      const res = await fetch(`${API_BASE}/login`, {
+      const res = await fetch(`${API_BASE}login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -141,7 +141,7 @@ function App() {
     if (postForm.imageFile) fd.append("image", postForm.imageFile);
     try {
       setCreateLoading(true);
-      const res = await fetch(`${API_BASE}/posts`, {
+      const res = await fetch(`${API_BASE}posts`, {
         method: "POST",
         headers,
         body: fd,
@@ -163,7 +163,7 @@ function App() {
   const toggleLike = async (id) => {
     if (!token) return showToast("Login to like");
     try {
-      const res = await fetch(`${API_BASE}/posts/${id}/like`, {
+      const res = await fetch(`${API_BASE}posts/${id}/like`, {
         method: "POST",
         headers,
       });
@@ -192,7 +192,7 @@ function App() {
     if (!token) return showToast("Login to comment");
     if (!text) return;
     try {
-      const res = await fetch(`${API_BASE}/posts/${id}/comment`, {
+      const res = await fetch(`${API_BASE}posts/${id}/comment`, {
         method: "POST",
         headers: {
           ...headers,
