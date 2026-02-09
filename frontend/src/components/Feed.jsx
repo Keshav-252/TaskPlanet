@@ -5,7 +5,7 @@ import { formatDate } from "../utils/formatDate.js";
 export default function Feed({ posts, loading, onLike, submitComment, isAuthed }) {
   if (loading) return <div className="card">Loading feed...</div>;
   const [expandedComments, setExpandedComments] = useState({});
-  const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:3001";
+  const API_BASE = import.meta.env.VITE_API_URL;
   return (
     <div className="feed">
       {posts.length === 0 && <div className="card">No posts yet</div>}
@@ -24,7 +24,7 @@ export default function Feed({ posts, loading, onLike, submitComment, isAuthed }
             {post.image && (
               <img
                 className="post-image"
-                src={`${API_BASE}${post.image.startsWith("/") ? post.image : `/${post.image}`}`}
+                src={`${API_BASE}${post.image.startsWith("/") ? post.image.substring(1) : post.image}`}
                 alt="post"
               />
             )}
